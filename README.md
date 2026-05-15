@@ -7,7 +7,7 @@
 
 > The personal portfolio of **Bilal Amir**, a Frontend Web Developer specializing in high-performance Next.js architectures, decoupled enterprise Headless CMS integrations, and pixel-perfect UIs.
 
-🔗 **[View Live Demo Here](https://bilalamir.com)** _(Replace with your Vercel URL)_
+🔗 **[View Live Demo Here](https://bilalamir.com)**
 
 ## ✨ Features
 
@@ -26,7 +26,7 @@
 - **Forms & Validation:** React Hook Form
 - **Email Handling:** EmailJS (@emailjs/browser)
 - **Icons:** Lucide React
-- **Deployment:** Vercel
+- **Deployment:** Cloudflare
 
 ## 💻 Local Development
 
