@@ -1,8 +1,8 @@
-// components/Experience.tsx
 "use client";
 
-import { LazyMotion, domAnimation, m, Variants } from "framer-motion";
-import { Briefcase, Calendar, Building2 } from "lucide-react";
+import { LazyMotion, domAnimation, m, Variants, useScroll, useSpring } from "framer-motion";
+import { useRef } from "react";
+import { ArrowRight } from "lucide-react";
 
 // ─── Data ────────────────────────────────────────────────────────────────────
 
@@ -10,117 +10,188 @@ const EXPERIENCE_DATA = [
     {
         company: "Apply Dreams",
         role: "Frontend Web Developer",
-        period: "Jul 2025 - Present",
-        description: "Developing high-performance web applications. Integrating Sitecore CMS with Next.js using Sitecore JSS and GraphQL for dynamic content mapping and headless architecture. Converting Figma designs into pixel-perfect, responsive UI components with Tailwind CSS.",
+        period: "Jul 2025 – Present",
+        current: true,
+        tags: ["Next.js", "Sitecore JSS", "GraphQL", "Tailwind CSS"],
+        description:
+            "Integrating Sitecore CMS with Next.js using Sitecore JSS and GraphQL for dynamic content mapping and headless architecture. Converting Figma designs into pixel-perfect, responsive UI components at scale.",
+        highlight: "Headless Architecture",
     },
     {
         company: "Hurak Technologies",
         role: "Frontend Web Developer",
-        period: "Feb 2025 - Jul 2025",
-        description: "Redesigned and maintained LMS and BMS systems utilizing Next.js for the frontend and Laravel for the backend. Built responsive user interfaces, integrated frontend interfaces with backend APIs, and improved system performance and cross-browser compatibility.",
+        period: "Feb – Jul 2025",
+        current: false,
+        tags: ["Next.js", "Laravel", "REST APIs"],
+        description:
+            "Redesigned LMS and BMS systems end-to-end. Built responsive interfaces, integrated frontend with backend APIs, and drove measurable improvements in system performance and cross-browser compatibility.",
+        highlight: "LMS & BMS Systems",
     },
     {
         company: "FoneRep",
         role: "PHP Developer",
-        period: "Nov 2024 - Feb 2025",
-        description: "Developed custom themes and plugins for Moodle. Collaborated with the team to enhance platform functionality while ensuring strict adherence to coding standards and performance optimization.",
+        period: "Nov 2024 – Feb 2025",
+        current: false,
+        tags: ["PHP", "Moodle", "Plugin Dev"],
+        description:
+            "Developed custom Moodle themes and plugins while collaborating cross-functionally to enhance platform functionality. Maintained strict adherence to coding standards throughout.",
+        highlight: "Moodle Platform",
     },
     {
         company: "XOSOFT Technologies",
-        role: "FrontEnd Developer",
-        period: "2022 - 2023",
-        description: "Built and optimized responsive UI components in React.js, improving page load performance. Integrated UI with backend APIs and collaborated with senior developers to refactor legacy code into modular, maintainable components.",
+        role: "Frontend Developer",
+        period: "2022 – 2023",
+        current: false,
+        tags: ["React.js", "API Integration", "Refactoring"],
+        description:
+            "Built and optimised responsive React.js components, improving page load performance. Integrated frontend with backend APIs and refactored legacy code into modular, maintainable architecture.",
+        highlight: "React.js Foundations",
     },
 ];
 
-// ─── Variants ─────────────────────────────────────────────────────────────
+// ─── Variants ─────────────────────────────────────────────────────────────────
 
-const containerVariants: Variants = {
+const sectionVariants: Variants = {
     hidden: { opacity: 0 },
+    visible: { opacity: 1, transition: { staggerChildren: 0.12 } },
+};
+
+const cardVariants: Variants = {
+    hidden: { opacity: 0, y: 40 },
     visible: {
         opacity: 1,
-        transition: { staggerChildren: 0.15 },
+        y: 0,
+        transition: { type: "spring", stiffness: 80, damping: 20 },
     },
 };
 
-const nodeVariants: Variants = {
-    hidden: { opacity: 0, x: -20 },
-    visible: {
-        opacity: 1,
-        x: 0,
-        transition: { type: "spring", stiffness: 100, damping: 20 },
-    },
-};
+// ─── Scroll Progress Bar ──────────────────────────────────────────────────────
 
-// ─── Sub-components ───────────────────────────────────────────────────────
+function CareerProgress() {
+    const ref = useRef<HTMLDivElement>(null);
 
-interface TimelineNodeProps {
-    job: typeof EXPERIENCE_DATA[0];
-    isLast: boolean;
-}
+    const { scrollYProgress } = useScroll({
+        target: ref,
+        offset: ["start end", "end start"],
+    });
 
-function TimelineNode({ job, isLast }: TimelineNodeProps) {
+    const scaleX = useSpring(scrollYProgress, {
+        stiffness: 100,
+        damping: 30,
+    });
+
     return (
-        <m.div variants={nodeVariants} className="relative group pl-10 md:pl-16 mb-12 last:mb-0">
-            {/* The Animated Timeline Marker */}
-            <div className="absolute -left-4 md:-left-5 top-1 flex items-center justify-center w-8 h-8 md:w-10 md:h-10 rounded-full ring-8 ring-zinc-950 bg-zinc-900 border border-zinc-700 z-20 group-hover:border-emerald-500/50 group-hover:bg-emerald-500/10 group-hover:shadow-[0_0_15px_rgba(16,185,129,0.2)] transition-all duration-300">
-                <Briefcase className="w-3.5 h-3.5 md:w-4 md:h-4 text-zinc-500 group-hover:text-emerald-400 transition-colors duration-300" />
-            </div>
-
-            {/* Continuous Line to next item */}
-            {!isLast && (
-                <div
-                    className="
-            absolute
-            left-4 md:left-5
-            top-10 md:top-12
-            -bottom-12
-            w-px
-            -translate-x-1/2
-            bg-zinc-800/80
-            group-hover:bg-zinc-700
-            transition-colors duration-300
-            z-0
-        "
+        <div ref={ref} className="relative mb-16">
+            <div className="relative h-px w-full overflow-hidden rounded-full bg-zinc-800/60">
+                <m.div
+                    className="absolute inset-y-0 left-0 origin-left bg-emerald-500"
+                    style={{ scaleX }}
                 />
-            )}
-            {/* The Content Card */}
-            <div className="relative p-6 md:p-8 rounded-3xl bg-zinc-900/20 border border-zinc-800/50 hover:bg-zinc-900/40 hover:border-zinc-700/80 transition-all duration-300">
-                {/* Corner accents */}
-                <span className="absolute top-3 left-3 w-4 h-4 border-t border-l border-zinc-700/60 rounded-tl-lg pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                <span className="absolute top-3 right-3 w-4 h-4 border-t border-r border-zinc-700/60 rounded-tr-lg pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                <span className="absolute bottom-3 left-3 w-4 h-4 border-b border-l border-zinc-700/60 rounded-bl-lg pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                <span className="absolute bottom-3 right-3 w-4 h-4 border-b border-r border-zinc-700/60 rounded-br-lg pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-
-                <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4 gap-3">
-                    <h3 className="text-xl md:text-2xl font-bold text-zinc-50 group-hover:text-emerald-400 transition-colors duration-300">
-                        {job.role}
-                    </h3>
-
-                    <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-zinc-950 border border-zinc-800/80 w-fit">
-                        <Calendar className="w-3.5 h-3.5 text-emerald-500" />
-                        <span className="text-xs font-mono text-zinc-400 tracking-wide">{job.period}</span>
-                    </div>
-                </div>
-
-                <div className="flex items-center gap-2 mb-6">
-                    <Building2 className="w-4 h-4 text-zinc-500" />
-                    <h4 className="text-base text-zinc-300 font-medium">{job.company}</h4>
-                </div>
-
-                <p className="text-zinc-400 text-sm md:text-base leading-relaxed">
-                    {job.description}
-                </p>
             </div>
-        </m.div>
+        </div>
     );
 }
 
-// ─── Main Component ───────────────────────────────────────────────────────
+// ─── Chapter Card ─────────────────────────────────────────────────────────────
+
+interface ChapterCardProps {
+    job: (typeof EXPERIENCE_DATA)[0];
+    index: number;
+}
+
+function ChapterCard({ job, index }: ChapterCardProps) {
+    return (
+        <m.article
+            variants={cardVariants}
+            className="group relative grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-0 rounded-2xl overflow-hidden border border-zinc-800/50 hover:border-zinc-700/60 transition-colors duration-500"
+        >
+            {/* Left panel — identity */}
+            <div className="relative flex flex-col justify-between p-7 md:p-8 bg-zinc-900/40 border-b md:border-b-0 md:border-r border-zinc-800/50">
+                {/* Giant step number watermark */}
+                <span
+                    aria-hidden
+                    className="absolute -top-3 -left-2 text-[7rem] md:text-[9rem] font-black text-zinc-800/30 select-none leading-none pointer-events-none tracking-tighter tabular-nums"
+                >
+                    {String(index + 1).padStart(2, "0")}
+                </span>
+
+                <div className="relative z-10 flex flex-col gap-5">
+                    {/* Current badge */}
+                    {job.current && (
+                        <div className="flex items-center gap-2 w-fit">
+                            <span className="relative flex h-1.5 w-1.5">
+                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-70" />
+                                <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-500" />
+                            </span>
+                            <span className="text-[9px] font-mono tracking-[0.18em] text-emerald-500 uppercase">
+                                Current Role
+                            </span>
+                        </div>
+                    )}
+
+                    <div>
+                        <p className="text-[10px] font-mono tracking-widest text-zinc-600 uppercase mb-2">
+                            {job.period}
+                        </p>
+                        <h3 className="text-xl md:text-2xl font-bold text-zinc-50 leading-tight group-hover:text-emerald-400 transition-colors duration-300">
+                            {job.role}
+                        </h3>
+                    </div>
+
+                    <div className="flex items-center gap-2">
+                        <div className="w-5 h-px bg-zinc-700" />
+                        <span className="text-sm text-zinc-400 font-medium">{job.company}</span>
+                    </div>
+                </div>
+
+                {/* Highlight pill */}
+                <div className="relative z-10 mt-8 md:mt-0">
+                    <span className="inline-block text-[10px] font-mono tracking-wider text-emerald-400/70 bg-emerald-500/5 border border-emerald-500/15 rounded-lg px-3 py-1.5">
+                        {job.highlight}
+                    </span>
+                </div>
+            </div>
+
+            {/* Right panel — content */}
+            <div className="relative flex flex-col justify-between p-7 md:p-8 bg-zinc-950/20">
+                {/* Subtle dot-grid texture */}
+                <div
+                    aria-hidden
+                    className="absolute inset-0 opacity-[0.025] pointer-events-none"
+                    style={{
+                        backgroundImage: `radial-gradient(circle, rgba(255,255,255,0.8) 1px, transparent 1px)`,
+                        backgroundSize: "24px 24px",
+                    }}
+                />
+
+                <p className="relative text-zinc-400 text-sm md:text-base leading-relaxed mb-8">
+                    {job.description}
+                </p>
+
+                {/* Footer — tags + arrow */}
+                <div className="relative flex items-end justify-between gap-4">
+                    <div className="flex flex-wrap gap-2">
+                        {job.tags.map((tag) => (
+                            <span
+                                key={tag}
+                                className="text-[10px] font-mono text-zinc-600 bg-zinc-900 border border-zinc-800/80 rounded-full px-2.5 py-1 group-hover:border-zinc-700 group-hover:text-zinc-500 transition-colors duration-300"
+                            >
+                                {tag}
+                            </span>
+                        ))}
+                    </div>
+                    <ArrowRight className="w-4 h-4 text-zinc-700 group-hover:text-emerald-400 shrink-0 transition-all duration-300 group-hover:translate-x-1" />
+                </div>
+            </div>
+        </m.article>
+    );
+}
+
+// ─── Main Component ───────────────────────────────────────────────────────────
 
 export default function Experience() {
     return (
-        <section id="experience" className="py-24 px-6 md:px-12 max-w-4xl mx-auto">
+        <section id="experience" className="container relative">
             <LazyMotion features={domAnimation}>
 
                 {/* Header */}
@@ -129,31 +200,35 @@ export default function Experience() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: "-100px" }}
                     transition={{ duration: 0.5 }}
-                    className="mb-16 text-center md:text-left flex flex-col items-center md:items-start"
+                    className="mb-12 flex flex-col md:flex-row md:items-end md:justify-between gap-4"
                 >
-                    <p className="text-[10px] font-mono tracking-[0.2em] text-emerald-500 uppercase mb-4 select-none">
-                        Career Journey
+                    <div>
+                        <p className="text-[10px] font-mono tracking-[0.2em] text-emerald-500 uppercase mb-4 select-none">
+                            Career Journey
+                        </p>
+                        <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-4 text-zinc-50">
+                            Experience
+                        </h2>
+                        <div className="w-16 h-0.5 bg-emerald-500 rounded-full" />
+                    </div>
+                    <p className="text-xs font-mono text-zinc-600 pb-1 select-none tabular-nums">
+                        {EXPERIENCE_DATA.length} positions
                     </p>
-                    <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-4 text-zinc-50">
-                        Experience
-                    </h2>
-                    <div className="w-16 h-0.5 bg-emerald-500 rounded-full" />
                 </m.div>
 
-                {/* Timeline Container */}
+                {/* Scroll-driven progress bar */}
+                <CareerProgress />
+
+                {/* Chapter cards */}
                 <m.div
-                    variants={containerVariants}
+                    variants={sectionVariants}
                     initial="hidden"
                     whileInView="visible"
-                    viewport={{ once: true, margin: "-50px" }}
-                    className="relative"
+                    viewport={{ once: true, margin: "-60px" }}
+                    className="flex flex-col gap-4"
                 >
                     {EXPERIENCE_DATA.map((job, index) => (
-                        <TimelineNode
-                            key={index}
-                            job={job}
-                            isLast={index === EXPERIENCE_DATA.length - 1}
-                        />
+                        <ChapterCard key={index} job={job} index={index} />
                     ))}
                 </m.div>
 

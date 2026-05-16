@@ -34,7 +34,7 @@ export default function Hero() {
     };
 
     return (
-        <section id="hero" className="min-h-screen flex items-center justify-center bg-zinc-950 text-zinc-50 px-6 pt-20">
+        <section id="hero" className="container min-h-screen flex items-center justify-center bg-zinc-950 text-zinc-50 pt-20">
             <motion.div
                 variants={containerVariants}
                 initial="hidden"

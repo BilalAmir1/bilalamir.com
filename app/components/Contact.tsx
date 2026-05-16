@@ -161,7 +161,7 @@ export default function Contact() {
     };
 
     return (
-        <section id="contact" className="py-24 px-6 md:px-12 max-w-6xl mx-auto">
+        <section id="contact" className="container">
             <LazyMotion features={domAnimation}>
                 {/* Header */}
                 <m.div

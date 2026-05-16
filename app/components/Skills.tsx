@@ -109,7 +109,7 @@ export default function Skills() {
     const totalSkills = SKILL_CATEGORIES.reduce((acc, c) => acc + c.skills.length, 0);
 
     return (
-        <section id="skills" className="py-24 px-6 md:px-12 max-w-6xl mx-auto">
+        <section id="skills" className="container">
             <LazyMotion features={domAnimation}>
                 {/* Header */}
                 <m.div

@@ -188,7 +188,7 @@ export default function Architecture() {
     const isInView = useInView(diagramRef, { once: true, margin: "-80px" });
 
     return (
-        <section id="architecture" className="py-24 px-6 md:px-12 max-w-6xl mx-auto overflow-hidden">
+        <section id="architecture" className="container">
             <LazyMotion features={domAnimation}>
 
                 {/* Header */}

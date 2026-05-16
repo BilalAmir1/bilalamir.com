@@ -58,7 +58,7 @@ export default function Projects() {
     };
 
     return (
-        <section id="projects" className="py-24 px-6 md:px-12 max-w-6xl mx-auto scroll-m-10">
+        <section id="projects" className="container scroll-m-10">
             <LazyMotion features={domAnimation}>
 
                 {/* Header */}
