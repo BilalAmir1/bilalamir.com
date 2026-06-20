@@ -1,4 +1,4 @@
-// components/Skills.tsx
+
 "use client";
 
 import { LazyMotion, domAnimation, m, AnimatePresence, Variants, LayoutGroup } from "framer-motion";
@@ -68,10 +68,10 @@ function SkillPill({ skill, isActive, isDimmed, onClick }: SkillPillProps) {
                 relative px-4 py-2 text-sm font-medium rounded-full border
                 transition-colors duration-250 cursor-pointer select-none overflow-hidden
                 ${isActive
-                    ? "bg-emerald-500/15 border-emerald-400/70 text-emerald-300"
+                    ? "bg-emerald-500/15 border-emerald-400/70 text-emerald-700 dark:text-emerald-300"
                     : isDimmed
-                        ? "bg-zinc-900/30 border-zinc-800/40 text-zinc-600 grayscale pointer-events-none"
-                        : "bg-zinc-900 border-zinc-700/50 text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-400 hover:bg-emerald-500/5"
+                        ? "bg-zinc-100/30 dark:bg-zinc-900/30 border-zinc-200/40 dark:border-zinc-800/40 text-zinc-400 dark:text-zinc-600 grayscale pointer-events-none"
+                        : "bg-zinc-100 dark:bg-zinc-900 border-zinc-300/50 dark:border-zinc-700/50 text-zinc-700 dark:text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-emerald-500/5"
                 }
             `}
         >
@@ -120,10 +120,10 @@ export default function Skills() {
                     className="mb-16 flex flex-col md:flex-row md:items-end md:justify-between gap-4"
                 >
                     <div>
-                        <p className="text-[10px] font-mono tracking-[0.2em] text-emerald-500 uppercase mb-4 select-none">
+                        <p className="text-[10px] font-mono tracking-[0.2em] text-emerald-600 dark:text-emerald-500 uppercase mb-4 select-none">
                             Capabilities
                         </p>
-                        <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-4 text-zinc-50">
+                        <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-4 text-zinc-950 dark:text-zinc-50">
                             Technical Arsenal
                         </h2>
                         <div className="w-16 h-0.5 bg-emerald-500 rounded-full" />
@@ -140,7 +140,7 @@ export default function Skills() {
                                     exit={{ opacity: 0, x: 8 }}
                                     transition={{ duration: 0.2 }}
                                     onClick={() => setActiveSkills([])}
-                                    className="flex items-center gap-1.5 text-xs font-mono text-zinc-400 hover:text-emerald-400 transition-colors cursor-pointer"
+                                    className="flex items-center gap-1.5 text-xs font-mono text-zinc-600 dark:text-zinc-400 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors cursor-pointer"
                                 >
                                     <X className="w-3 h-3" />
                                     Clear filter
@@ -151,7 +151,7 @@ export default function Skills() {
                                     initial={{ opacity: 0 }}
                                     animate={{ opacity: 1 }}
                                     exit={{ opacity: 0 }}
-                                    className="text-xs font-mono text-zinc-600 select-none"
+                                    className="text-xs font-mono text-zinc-400 dark:text-zinc-600 select-none"
                                 >
                                     {totalSkills} technologies
                                 </m.p>
@@ -173,13 +173,13 @@ export default function Skills() {
                         >
                             <div className="flex items-center gap-3 px-4 py-3 rounded-xl bg-emerald-500/5 border border-emerald-500/15">
                                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 shrink-0" />
-                                <p className="text-sm text-zinc-400">
+                                <p className="text-sm text-zinc-600 dark:text-zinc-400">
                                     Viewing{" "}
-                                    <span className="text-emerald-300 font-medium">{activeSkill}</span>
+                                    <span className="text-emerald-700 dark:text-emerald-300 font-medium">{activeSkill}</span>
                                     {" "}— click again or{" "}
                                     <button
                                         onClick={() => setActiveSkills([])}
-                                        className="text-zinc-500 underline underline-offset-2 hover:text-zinc-300 transition-colors cursor-pointer"
+                                        className="text-zinc-500 underline underline-offset-2 hover:text-zinc-700 dark:hover:text-zinc-300 transition-colors cursor-pointer"
                                     >
                                         clear
                                     </button>{" "}
@@ -209,19 +209,19 @@ export default function Skills() {
                             >
                                 {/* Category header */}
                                 <div className="flex items-baseline gap-3">
-                                    <span className="text-[9px] font-mono text-zinc-700 select-none tabular-nums">
+                                    <span className="text-[9px] font-mono text-zinc-300 dark:text-zinc-700 select-none tabular-nums">
                                         {category.index}
                                     </span>
-                                    <h3 className="text-base font-semibold text-zinc-200 tracking-tight">
+                                    <h3 className="text-base font-semibold text-zinc-800 dark:text-zinc-200 tracking-tight">
                                         {category.title}
                                     </h3>
-                                    <span className="ml-auto text-[9px] font-mono text-zinc-700 tabular-nums select-none">
+                                    <span className="ml-auto text-[9px] font-mono text-zinc-300 dark:text-zinc-700 tabular-nums select-none">
                                         {category.skills.length}
                                     </span>
                                 </div>
 
                                 {/* Separator */}
-                                <div className="h-px bg-zinc-800/60" />
+                                <div className="h-px bg-zinc-200/60 dark:bg-zinc-800/60" />
 
                                 {/* Pills */}
                                 <m.div

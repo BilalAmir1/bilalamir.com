@@ -1,4 +1,3 @@
-
 "use client";
 
 import { motion, Variants } from "framer-motion";
@@ -34,7 +33,7 @@ export default function Hero() {
     };
 
     return (
-        <section id="hero" className="container min-h-screen flex items-center justify-center bg-zinc-950 text-zinc-50 pt-20">
+        <section id="hero" className="container min-h-screen flex items-center justify-center bg-zinc-50 dark:bg-zinc-950 text-zinc-950 dark:text-zinc-50 pt-20">
             <motion.div
                 variants={containerVariants}
                 initial="hidden"
@@ -46,17 +45,17 @@ export default function Hero() {
                         <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                         <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
                     </span>
-                    <p className="text-emerald-400 font-mono text-sm uppercase tracking-wider">
+                    <p className="text-emerald-600 dark:text-emerald-400 font-mono text-sm uppercase tracking-wider">
                         Web Developer
                     </p>
                 </motion.div>
 
                 <motion.h1 variants={itemVariants} className="text-5xl md:text-7xl font-bold tracking-tight">
                     Hi, I'm Bilal Amir. <br />
-                    <span className="text-zinc-400">Next.js & Headless CMS Specialist.</span>
+                    <span className="text-zinc-600 dark:text-zinc-400">Next.js & Headless CMS Specialist.</span>
                 </motion.h1>
 
-                <motion.p variants={itemVariants} className="text-lg md:text-xl text-zinc-400 max-w-2xl leading-relaxed">
+                <motion.p variants={itemVariants} className="text-lg md:text-xl text-zinc-600 dark:text-zinc-400 max-w-2xl leading-relaxed">
                     I specialize in translating complex Figma design systems into scalable, production-ready React and Next.js code. My focus is on enterprise headless CMS integrations, seamlessly bridging backend data via Sitecore JSS (GraphQL) and Strapi APIs with modern frontend architecture.
                 </motion.p>
 
@@ -64,7 +63,7 @@ export default function Hero() {
                     <a
                         href="#projects"
                         onClick={scrollToProjects}
-                        className="group flex items-center gap-2 bg-zinc-50 text-zinc-950 px-6 py-3 rounded-full font-medium hover:bg-zinc-200 transition-colors cursor-pointer"
+                        className="group flex items-center gap-2 bg-zinc-950 dark:bg-zinc-50 text-zinc-50 dark:text-zinc-950 px-6 py-3 rounded-full font-medium hover:bg-zinc-800 dark:hover:bg-zinc-200 transition-colors cursor-pointer"
                     >
                         View Projects
                         <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -73,9 +72,9 @@ export default function Hero() {
                     <Link
                         href="https://www.linkedin.com/in/bilalamirweb/"
                         target="_blank"
-                        className="p-3 rounded-full bg-zinc-900 border border-zinc-800 hover:bg-zinc-800 hover:border-zinc-700 transition-all"
+                        className="p-3 rounded-full bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700 transition-all"
                     >
-                        <LinkedinIcon className="w-5 h-5 text-zinc-50" />
+                        <LinkedinIcon className="w-5 h-5 text-zinc-950 dark:text-zinc-50" />
                         <span className="sr-only">LinkedIn</span>
                     </Link>
                 </motion.div>

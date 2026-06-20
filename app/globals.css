@@ -1,8 +1,18 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #fafafa;
+  --foreground: #09090b;
+  --dot-grid: rgba(0, 0, 0, 0.45);
+}
+
+.dark {
+  --background: #09090b;
+  --foreground: #fafafa;
+
+  --dot-grid: rgba(255, 255, 255, 0.8);
 }
 
 @theme inline {
@@ -10,13 +20,6 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
 }
 
 body {
@@ -38,5 +41,51 @@ body {
   @media (min-width: 768px) {
     padding-left: 3rem;
     padding-right: 3rem;
+  }
+}
+
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+::view-transition-new(root) {
+  animation: theme-reveal 600ms cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+::view-transition-old(root) {
+  animation: theme-reveal-out 600ms cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+@keyframes theme-reveal {
+  from {
+    clip-path: circle(0% at var(--x, 100%) var(--y, 0%));
+  }
+
+  to {
+    clip-path: circle(150% at var(--x, 100%) var(--y, 0%));
+  }
+}
+
+@keyframes theme-reveal-out {
+  from {
+    clip-path: circle(150% at var(--x, 100%) var(--y, 0%));
+  }
+
+  to {
+    clip-path: circle(150% at var(--x, 100%) var(--y, 0%));
+  }
+}
+
+
+@media (prefers-reduced-motion: no-preference) {
+
+  body,
+  body * {
+    transition-property: background-color, border-color, color, fill, stroke, box-shadow;
+    transition-duration: 200ms;
+    transition-timing-function: ease;
   }
 }

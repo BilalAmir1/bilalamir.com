@@ -1,11 +1,11 @@
-// components/Contact.tsx
+
 "use client";
 
 import { LazyMotion, domAnimation, m } from "framer-motion";
 import { Mail, ArrowUpRight, Send, Loader2, Phone } from "lucide-react";
 import { useState, useId, forwardRef } from "react";
 import { useForm } from "react-hook-form";
-import emailjs from "@emailjs/browser"; // <-- 1. Import EmailJS
+import emailjs from "@emailjs/browser";
 import { LinkedinIcon } from "../assets/icons/LinkedinIcon";
 
 // ─── Types ──────────────────────────────────────────────────────────────────
@@ -51,20 +51,20 @@ function ContactLink({ href, icon: Icon, label, value }: (typeof CONTACT_LINKS)[
             href={href}
             target={href.startsWith("mailto") ? undefined : "_blank"}
             rel="noopener noreferrer"
-            className="group flex items-center gap-4 py-3.5 border-b border-zinc-800/60 last:border-0 transition-colors duration-200 hover:border-zinc-700/80"
+            className="group flex items-center gap-4 py-3.5 border-b border-zinc-200/60 dark:border-zinc-800/60 last:border-0 transition-colors duration-200 hover:border-zinc-300/80 dark:hover:border-zinc-700/80"
         >
-            <div className="w-9 h-9 rounded-xl bg-zinc-900 border border-zinc-800 flex items-center justify-center shrink-0 group-hover:border-emerald-500/30 group-hover:bg-emerald-500/5 transition-all duration-200">
-                <Icon className="w-4 h-4 text-zinc-500 group-hover:text-emerald-400 transition-colors duration-200" />
+            <div className="w-9 h-9 rounded-xl bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 flex items-center justify-center shrink-0 group-hover:border-emerald-500/30 group-hover:bg-emerald-500/5 transition-all duration-200">
+                <Icon className="w-4 h-4 text-zinc-500 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors duration-200" />
             </div>
             <div className="flex flex-col min-w-0">
-                <span className="text-[9px] font-mono tracking-widest text-zinc-600 uppercase select-none">
+                <span className="text-[9px] font-mono tracking-widest text-zinc-400 dark:text-zinc-600 uppercase select-none">
                     {label}
                 </span>
-                <span className="text-sm text-zinc-400 group-hover:text-zinc-200 transition-colors duration-200 truncate">
+                <span className="text-sm text-zinc-600 dark:text-zinc-400 group-hover:text-zinc-800 dark:group-hover:text-zinc-200 transition-colors duration-200 truncate">
                     {value}
                 </span>
             </div>
-            <ArrowUpRight className="w-3.5 h-3.5 text-zinc-700 group-hover:text-emerald-400 ml-auto shrink-0 transition-all duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            <ArrowUpRight className="w-3.5 h-3.5 text-zinc-300 dark:text-zinc-700 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 ml-auto shrink-0 transition-all duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
         </a>
     );
 }
@@ -94,16 +94,16 @@ const Field = forwardRef<HTMLInputElement & HTMLTextAreaElement, FieldProps>(
                     rows={rows}
                     {...props}
                     className={`
-                        w-full bg-zinc-900/60 border rounded-xl px-4 py-3 text-sm text-zinc-200
-                        placeholder:text-zinc-700 outline-none resize-none
+                        w-full bg-zinc-100/60 dark:bg-zinc-900/60 border rounded-xl px-4 py-3 text-sm text-zinc-800 dark:text-zinc-200
+                        placeholder:text-zinc-300 dark:placeholder:text-zinc-700 outline-none resize-none
                         transition-colors duration-200
-                        focus:border-emerald-500/40 focus:bg-zinc-900/80
-                        ${error ? "border-red-500/50" : "border-zinc-800/80"}
+                        focus:border-emerald-500/40 focus:bg-zinc-100/80 dark:focus:bg-zinc-900/80
+                        ${error ? "border-red-500/50" : "border-zinc-200/80 dark:border-zinc-800/80"}
                         ${as === "textarea" ? "leading-relaxed" : ""}
                     `}
                 />
                 {error && (
-                    <p className="text-[10px] text-red-400 font-mono mt-1">{error}</p>
+                    <p className="text-[10px] text-red-600 dark:text-red-400 font-mono mt-1">{error}</p>
                 )}
             </div>
         );
@@ -171,10 +171,10 @@ export default function Contact() {
                     transition={{ duration: 0.5 }}
                     className="mb-16"
                 >
-                    <p className="text-[10px] font-mono tracking-[0.2em] text-emerald-500 uppercase mb-4 select-none">
+                    <p className="text-[10px] font-mono tracking-[0.2em] text-emerald-600 dark:text-emerald-500 uppercase mb-4 select-none">
                         Get in touch
                     </p>
-                    <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-4 text-zinc-50">
+                    <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-4 text-zinc-950 dark:text-zinc-50">
                         Let's Build Together
                     </h2>
                     <div className="w-16 h-0.5 bg-emerald-500 rounded-full" />
@@ -190,7 +190,7 @@ export default function Contact() {
                         transition={{ type: "spring", stiffness: 80, damping: 18, delay: 0.1 }}
                         className="flex flex-col gap-8"
                     >
-                        <p className="text-zinc-400 text-base leading-relaxed">
+                        <p className="text-zinc-600 dark:text-zinc-400 text-base leading-relaxed">
                             Have a project in mind or want to discuss a role? I'm available for freelance
                             engagements and full-time positions. Drop a message and I'll get back within
                             24 hours.
@@ -222,15 +222,15 @@ export default function Contact() {
                         className="relative"
                     >
                         {/* Corner accents */}
-                        <span className="absolute top-3 left-3 w-4 h-4 border-t border-l border-zinc-700/60 rounded-tl-lg pointer-events-none z-10" />
-                        <span className="absolute top-3 right-3 w-4 h-4 border-t border-r border-zinc-700/60 rounded-tr-lg pointer-events-none z-10" />
-                        <span className="absolute bottom-3 left-3 w-4 h-4 border-b border-l border-zinc-700/60 rounded-bl-lg pointer-events-none z-10" />
-                        <span className="absolute bottom-3 right-3 w-4 h-4 border-b border-r border-zinc-700/60 rounded-br-lg pointer-events-none z-10" />
+                        <span className="absolute top-3 left-3 w-4 h-4 border-t border-l border-zinc-300/60 dark:border-zinc-700/60 rounded-tl-lg pointer-events-none z-10" />
+                        <span className="absolute top-3 right-3 w-4 h-4 border-t border-r border-zinc-300/60 dark:border-zinc-700/60 rounded-tr-lg pointer-events-none z-10" />
+                        <span className="absolute bottom-3 left-3 w-4 h-4 border-b border-l border-zinc-300/60 dark:border-zinc-700/60 rounded-bl-lg pointer-events-none z-10" />
+                        <span className="absolute bottom-3 right-3 w-4 h-4 border-b border-r border-zinc-300/60 dark:border-zinc-700/60 rounded-br-lg pointer-events-none z-10" />
 
                         <form
                             onSubmit={handleSubmit(onSubmit)}
                             noValidate
-                            className="flex flex-col gap-5 p-7 rounded-3xl bg-zinc-900/20 border border-zinc-800/50"
+                            className="flex flex-col gap-5 p-7 rounded-3xl bg-zinc-100/20 dark:bg-zinc-900/20 border border-zinc-200/50 dark:border-zinc-800/50"
                         >
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                                 <Field
@@ -278,7 +278,7 @@ export default function Contact() {
                                 <m.p
                                     initial={{ opacity: 0, y: -10 }}
                                     animate={{ opacity: 1, y: 0 }}
-                                    className="text-xs font-mono text-emerald-400 bg-emerald-500/5 border border-emerald-500/15 rounded-lg px-3 py-2"
+                                    className="text-xs font-mono text-emerald-600 dark:text-emerald-400 bg-emerald-500/5 border border-emerald-500/15 rounded-lg px-3 py-2"
                                 >
                                     ✓ Message sent — I'll be in touch soon.
                                 </m.p>
@@ -287,7 +287,7 @@ export default function Contact() {
                                 <m.p
                                     initial={{ opacity: 0, y: -10 }}
                                     animate={{ opacity: 1, y: 0 }}
-                                    className="text-xs font-mono text-red-400 bg-red-500/5 border border-red-500/15 rounded-lg px-3 py-2"
+                                    className="text-xs font-mono text-red-600 dark:text-red-400 bg-red-500/5 border border-red-500/15 rounded-lg px-3 py-2"
                                 >
                                     Something went wrong. Please try again or email me directly.
                                 </m.p>
