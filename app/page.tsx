@@ -5,6 +5,7 @@ import { SkillProvider } from "./components/SkillContext";
 import Skills from "./components/Skills";
 import Architecture from "./components/Architecture";
 import Contact from "./components/Contact";
+import AvailabilityBanner from "./components/AvailabilityBanner";
 
 
 export default function Home() {
@@ -18,7 +19,7 @@ export default function Home() {
         <Projects />
         <Skills />
       </SkillProvider>
-
+      <AvailabilityBanner />
       <Contact />
     </main>
   );
