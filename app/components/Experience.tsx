@@ -106,7 +106,7 @@ function ChapterCard({ job, index }: ChapterCardProps) {
             className="group relative grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-0 rounded-2xl overflow-hidden border border-zinc-200/50 dark:border-zinc-800/50 hover:border-zinc-300/60 dark:hover:border-zinc-700/60 transition-colors duration-500"
         >
             {/* Left panel — identity */}
-            <div className="relative flex flex-col justify-between p-7 md:p-8 bg-zinc-100/40 dark:bg-zinc-900/40 border-b md:border-b-0 md:border-r border-zinc-200/50 dark:border-zinc-800/50">
+            <div className="relative flex flex-col justify-between min-h-[220px] p-7 md:p-8 bg-zinc-100/40 dark:bg-zinc-900/40 border-b md:border-b-0 md:border-r border-zinc-200/50 dark:border-zinc-800/50">
                 {/* Giant step number watermark */}
                 <span
                     aria-hidden
@@ -116,18 +116,21 @@ function ChapterCard({ job, index }: ChapterCardProps) {
                 </span>
 
                 <div className="relative z-10 flex flex-col gap-5">
-                    {/* Current badge */}
-                    {job.current && (
-                        <div className="flex items-center gap-2 w-fit">
-                            <span className="relative flex h-1.5 w-1.5">
-                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-70" />
-                                <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-500" />
-                            </span>
-                            <span className="text-[9px] font-mono tracking-[0.18em] text-emerald-600 dark:text-emerald-500 uppercase">
-                                Current Role
-                            </span>
-                        </div>
-                    )}
+                    {/* Current badge — always reserves its height so card rhythm stays consistent whether or not this is the current role */}
+                    <div
+                        className={`flex items-center gap-2 w-fit h-4 transition-opacity duration-300 ${
+                            job.current ? "opacity-100" : "opacity-0 pointer-events-none"
+                        }`}
+                        aria-hidden={!job.current}
+                    >
+                        <span className="relative flex h-1.5 w-1.5">
+                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-70" />
+                            <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-500" />
+                        </span>
+                        <span className="text-[9px] font-mono tracking-[0.18em] text-emerald-600 dark:text-emerald-500 uppercase">
+                            Current Role
+                        </span>
+                    </div>
 
                     <div>
                         <p className="text-[10px] font-mono tracking-widest text-zinc-400 dark:text-zinc-600 uppercase mb-2">
@@ -145,7 +148,7 @@ function ChapterCard({ job, index }: ChapterCardProps) {
                 </div>
 
                 {/* Highlight pill */}
-                <div className="relative z-10 mt-8 md:mt-0">
+                <div className="relative z-10 mt-10 md:mt-0">
                     <span className="inline-block text-[10px] font-mono tracking-wider text-emerald-700/80 dark:text-emerald-400/70 bg-emerald-500/5 border border-emerald-500/15 rounded-lg px-3 py-1.5">
                         {job.highlight}
                     </span>
