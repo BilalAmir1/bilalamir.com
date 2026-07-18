@@ -10,11 +10,11 @@ const EXPERIENCE_DATA = [
     {
         company: "Apply Dreams",
         role: "Frontend Web Developer",
-        period: "Jul 2025 – Present",
-        current: true,
+        period: "Jul 2025 – Jul 2026",
+        current: false,
         tags: ["Next.js", "Sitecore JSS", "GraphQL", "Tailwind CSS"],
         description:
-            "Integrating Sitecore CMS with Next.js using Sitecore JSS and GraphQL for dynamic content mapping and headless architecture. Converting Figma designs into pixel-perfect, responsive UI components at scale.",
+            "Integrated Sitecore CMS with Next.js using Sitecore JSS and GraphQL for dynamic content mapping and headless architecture. Converted Figma designs into pixel-perfect, responsive UI components at scale.",
         highlight: "Headless Architecture",
     },
     {
@@ -24,7 +24,7 @@ const EXPERIENCE_DATA = [
         current: false,
         tags: ["Next.js", "Laravel", "REST APIs"],
         description:
-            "Redesigned LMS and BMS systems end-to-end. Built responsive interfaces, integrated frontend with backend APIs, and drove measurable improvements in system performance and cross-browser compatibility.",
+            "Worked as part of the engineering team to rebuild and maintain LMS and BMS platforms using a Next.js frontend and Laravel backend. Integrated frontend interfaces with backend APIs and contributed to measurable improvements in system performance and cross-browser compatibility.",
         highlight: "LMS & BMS Systems",
     },
     {
