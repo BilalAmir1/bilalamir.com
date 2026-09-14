@@ -10,6 +10,7 @@ const items = [
     "Sitecore & Strapi Projects",
     "Remote Opportunities",
     "Enterprise Web Platforms",
+    "AI-Augmented Workflow",
 ];
 
 export default function AvailabilityBanner() {
@@ -95,6 +96,8 @@ export default function AvailabilityBanner() {
                                     I specialize in modern frontend development,
                                     enterprise headless CMS integrations, and
                                     high-performance Next.js applications.
+                                    I combine this with an AI-augmented development workflow (Cursor, Claude) 
+                                    to deliver faster without sacrificing architecture or code quality.
                                     Whether it's a greenfield product or a
                                     large-scale migration, I focus on clean
                                     architecture, maintainability, and

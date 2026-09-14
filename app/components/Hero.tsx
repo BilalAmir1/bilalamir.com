@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, Variants } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Briefcase } from "lucide-react";
 import Link from "next/link";
 import { LinkedinIcon } from "../assets/icons/LinkedinIcon";
 
@@ -58,6 +58,9 @@ export default function Hero() {
                 <motion.p variants={itemVariants} className="text-lg md:text-xl text-zinc-600 dark:text-zinc-400 max-w-2xl leading-relaxed">
                     I specialize in translating complex Figma design systems into scalable, production-ready React and Next.js code. My focus is on enterprise headless CMS integrations, seamlessly bridging backend data via Sitecore JSS (GraphQL) and Strapi APIs with modern frontend architecture.
                 </motion.p>
+                  <motion.p variants={itemVariants} className="text-lg md:text-xl text-zinc-600 dark:text-zinc-400 max-w-2xl leading-relaxed">
+                    I build with an AI-augmented workflow — using tools like Cursor and Claude to accelerate development without compromising code quality or architecture.
+                </motion.p>
 
                 <motion.div variants={itemVariants} className="flex items-center gap-4 pt-4">
                     <a
@@ -75,6 +78,14 @@ export default function Hero() {
                         className="p-3 rounded-full bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700 transition-all"
                     >
                         <LinkedinIcon className="w-5 h-5 text-zinc-950 dark:text-zinc-50" />
+                        <span className="sr-only">LinkedIn</span>
+                    </Link>
+                      <Link
+                        href="https://www.upwork.com/freelancers/~01ac985da68feed8f8?mp_source=share"
+                        target="_blank"
+                        className="p-3 rounded-full bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700 transition-all"
+                    >
+                        <Briefcase className="w-5 h-5 text-zinc-950 dark:text-zinc-50" />
                         <span className="sr-only">LinkedIn</span>
                     </Link>
                 </motion.div>

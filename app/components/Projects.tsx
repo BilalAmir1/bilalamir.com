@@ -10,19 +10,19 @@ const PROJECTS_DATA = [
         title: "ADQ Corporate Web Platform",
         role: "White-label Frontend Contractor",
         description: "Translated complex Figma design systems into highly reusable Next.js components. Mapped dynamic data utilizing both the Sitecore API (Layout Service) and GraphQL. Implemented structural layout switching for English and Arabic (LTR/RTL) localization.",
-        tech: ["Next.js", "Sitecore JSS", "GraphQL", "Tailwind CSS"],
+        tech: ["Next.js", "Sitecore JSS", "GraphQL", "Tailwind CSS" ,"Claude","Cursor",],
     },
     {
         title: "Hurak Learning LMS Migration",
         role: "Frontend Web Developer",
         description: "Collaborated with senior engineering leadership to migrate the Hurak Learning LMS from a legacy Laravel monolith to a decoupled Next.js frontend, including modifying backend REST APIs.",
-        tech: ["Next.js", "React.js", "Laravel", "Tailwind CSS", "Bootstrap", "REST APIs"],
+        tech: ["Next.js", "React.js", "Laravel", "Tailwind CSS", "Bootstrap", "REST APIs", "Claude","Cursor","Chat GPT"],
     },
     {
         title: "IHPC Global Web Platform",
         role: "White-label Frontend Contractor",
-        description: "Delivered the Next.js UI within a decoupled headless architecture. Focused on building pixel-perfect, reusable React components and cleanly mapped data from the Sitecore CMS backend via REST APIs and GraphQL queries.",
-        tech: ["Next.js", "React.js", "Sitecore JSS", "GraphQL", "Tailwind CSS", "REST APIs", "Mapbox"],
+        description: "Delivered the Next.js UI within a decoupled headless architecture. Focused on building pixel-perfect, reusable React components and cleanly mapped data from the Sitecore CMS backend via REST APIs and GraphQL queries. Leveraged AI tooling to speed up reusable component development while maintaining pixel-perfect accuracy.",
+        tech: ["Next.js", "React.js", "Sitecore JSS", "GraphQL", "Claude","Cursor", "Tailwind CSS", "REST APIs", "Mapbox"],
     },
     {
         title: "Innovation Challenge Platform",
@@ -35,7 +35,9 @@ const PROJECTS_DATA = [
             "GraphQL",
             "TypeScript",
             "Tailwind CSS",
-            "Headless CMS"
+            "Headless CMS",
+            "Claude",
+            "Cursor"
         ],
     },
 ];

@@ -2,11 +2,12 @@
 "use client";
 
 import { LazyMotion, domAnimation, m } from "framer-motion";
-import { Mail, ArrowUpRight, Send, Loader2, Phone } from "lucide-react";
+import { Mail, ArrowUpRight, Send, Loader2, Phone, Briefcase } from "lucide-react";
 import { useState, useId, forwardRef } from "react";
 import { useForm } from "react-hook-form";
 import emailjs from "@emailjs/browser";
 import { LinkedinIcon } from "../assets/icons/LinkedinIcon";
+
 
 // ─── Types ──────────────────────────────────────────────────────────────────
 
@@ -26,6 +27,12 @@ const CONTACT_LINKS = [
         value: "bilalamir610@gmail.com",
         href: "mailto:bilalamir610@gmail.com",
         icon: Mail,
+    },
+    {
+        label: "Upwork",
+        value: "Hire me on Upwork",
+        href: "https://www.upwork.com/freelancers/~01ac985da68feed8f8?mp_source=share",
+        icon: Briefcase,
     },
     {
         label: "Phone",
@@ -81,7 +88,7 @@ const Field = forwardRef<HTMLInputElement & HTMLTextAreaElement, FieldProps>(
     ({ label, id, error, as = "input", rows, ...props }, ref) => {
         const Tag = as;
         return (
-            <div className="flex flex-col gap-1.5">
+            <div className="flex flex-col gap-1.5">``
                 <label
                     htmlFor={id}
                     className="text-[9px] font-mono tracking-widest text-zinc-500 uppercase select-none"
