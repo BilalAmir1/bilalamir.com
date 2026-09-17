@@ -106,7 +106,7 @@ function ChapterCard({ job, index }: ChapterCardProps) {
             className="group relative grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-0 rounded-2xl overflow-hidden border border-zinc-200/50 dark:border-zinc-800/50 hover:border-zinc-300/60 dark:hover:border-zinc-700/60 transition-colors duration-500"
         >
             {/* Left panel — identity */}
-            <div className="relative flex flex-col justify-between min-h-[220px] p-7 md:p-8 bg-zinc-100/40 dark:bg-zinc-900/40 border-b md:border-b-0 md:border-r border-zinc-200/50 dark:border-zinc-800/50">
+            <div className="relative flex flex-col justify-between min-h-55 p-7 md:p-8 bg-zinc-100/40 dark:bg-zinc-900/40 border-b md:border-b-0 md:border-r border-zinc-200/50 dark:border-zinc-800/50">
                 {/* Giant step number watermark */}
                 <span
                     aria-hidden
